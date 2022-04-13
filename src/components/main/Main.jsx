@@ -8,8 +8,13 @@ function Main() {
   const dispatch = useDispatch()
   const repos = useSelector(state => state.repos.items)
   const isFetching = useSelector(state => state.repos.isFetching)
+  const currentPage = useSelector(state => state.repos.currentPage)
+  const perPage = useSelector(state => state.repos.perPage)
+  const totalCount = useSelector(state => state.repos.totalCount)
   const [searchValue, setSearchValue] = useState('')
-  console.log(repos, "REPOS");
+  // console.log(repos, "REPOS");
+
+const pages = [1,2,3,4,5]
 
   useEffect(() => {
     dispatch(getRepos())
@@ -17,7 +22,6 @@ function Main() {
 
   function searchHandler() {
     dispatch(getRepos(searchValue))
-    
   }
 
   return (
