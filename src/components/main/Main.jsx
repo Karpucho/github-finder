@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentPage } from '../../reducers/reposReducer';
+import { createPages } from '../../utils/pagesCreator';
 import { getRepos } from '../actions/repos';
 import './main.less'
-import Repo from './repo/Repo.jsx';
+import Repo from './repo/Repo';
 
 function Main() {
   const dispatch = useDispatch()
@@ -12,16 +14,19 @@ function Main() {
   const perPage = useSelector(state => state.repos.perPage)
   const totalCount = useSelector(state => state.repos.totalCount)
   const [searchValue, setSearchValue] = useState('')
+  const pagesCount = Math.ceil(totalCount/perPage)
+  const pages =[]
   // console.log(repos, "REPOS");
 
-const pages = [1,2,3,4,5]
+  createPages(pages, pagesCount, currentPage)
 
   useEffect(() => {
-    dispatch(getRepos())
-  }, [])
+    dispatch(getRepos(searchValue, currentPage, perPage))
+  }, [currentPage])
 
   function searchHandler() {
-    dispatch(getRepos(searchValue))
+    dispatch(setCurrentPage(1))
+    dispatch(getRepos(searchValue, currentPage, perPage))
   }
 
   return (
@@ -40,6 +45,13 @@ const pages = [1,2,3,4,5]
           
         </div>
       }
+
+      <div className="pages">
+        {pages.map((page, index) => <span
+         key={index}
+         className={currentPage === page ? 'current-page' : 'page'}
+         onClick={() => dispatch(setCurrentPage(page))} >{page}</span>)} 
+      </div>
     </div>
   );
 }
