@@ -1,7 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './app.less'
+import Card from './card/Card';
 import Main from './main/Main.jsx';
 
 function App(props) {
@@ -13,6 +14,7 @@ function App(props) {
       <div className="container">
         <Routes>
           <Route path="/" element={<Main />} />
+          <Route path="/card" element={<Card />} />
         </Routes>
       </div>
    </BrowserRouter>

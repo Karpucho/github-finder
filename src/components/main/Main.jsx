@@ -8,15 +8,17 @@ import Repo from './repo/Repo';
 
 function Main() {
   const dispatch = useDispatch()
+
   const repos = useSelector(state => state.repos.items)
   const isFetching = useSelector(state => state.repos.isFetching)
   const currentPage = useSelector(state => state.repos.currentPage)
   const perPage = useSelector(state => state.repos.perPage)
   const totalCount = useSelector(state => state.repos.totalCount)
+
   const [searchValue, setSearchValue] = useState('')
+  
   const pagesCount = Math.ceil(totalCount/perPage)
   const pages =[]
-  // console.log(repos, "REPOS");
 
   createPages(pages, pagesCount, currentPage)
 
@@ -28,7 +30,7 @@ function Main() {
     dispatch(setCurrentPage(1))
     dispatch(getRepos(searchValue, currentPage, perPage))
   }
-
+  // console.log(repos, "REPOS");
   return (
     <div>
       <div className="search">
@@ -49,7 +51,7 @@ function Main() {
       <div className="pages">
         {pages.map((page, index) => <span
          key={index}
-         className={currentPage === page ? 'current-page' : 'page'}
+         className={currentPage == page ? 'current-page' : 'page'}
          onClick={() => dispatch(setCurrentPage(page))} >{page}</span>)} 
       </div>
     </div>
