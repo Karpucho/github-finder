@@ -8,6 +8,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[fullhash].js',
+    publicPath: '/',
   },
   devServer: {
     port: 3000,
