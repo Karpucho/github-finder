@@ -43,14 +43,22 @@ function Main() {
     <div>
 
       { isFetchError &&
-        <div class="alert alert-danger" role="alert">
+        <div className="alert alert-danger" role="alert">
           Ты ошибся, друг!
         </div>
       }
+      <div className="header">
+        Поиск по самым популярным репозиториям GitHub
+      </div>
+      {/* <div className="search">
+       <input value={searchValue} onChange={(event) => setSearchValue(event.target.value)} type='text' className="search-input" placeholder='Search repo'  />
+       <button onClick={() => searchHandler()} className='btn btn-outline-success'>Search</button>
+      </div> */}
 
-      <div className="search">
-       <input value={searchValue} onChange={(event) => setSearchValue(event.target.value)} type='text' className="search-input" placeholder='Fill repo name' autoFocus={true} />
-       <button onClick={() => searchHandler()} className='search-btn'>Search</button>
+      <div className="input-group mb-3">
+        <button onClick={() => searchHandler()} className="btn btn-outline-secondary" type="button" id="button-addon1">Click me!</button>
+        <input value={searchValue} onChange={(event) => setSearchValue(event.target.value)} type="text" className="form-control" aria-label="Example text with button addon" aria-describedby="button-addon1" 
+        placeholder='Search repo' autoFocus={true} />
       </div>
       
       {
