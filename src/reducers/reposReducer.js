@@ -13,7 +13,6 @@ const defaultState = {
 }
 
 export default function reposReducer(state = defaultState, action) {
-  // console.log(action.payload, 'ЭКШН В РЕДЬЮС');
   switch (action.type) {
    
     case SET_REPOS:

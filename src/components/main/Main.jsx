@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { setCurrentPage } from '../../reducers/reposReducer';
 import { createPages } from '../../utils/pagesCreator';
 import { getRepos } from '../actions/repos';
@@ -18,7 +17,6 @@ function Main() {
   const isFetchError = useSelector(state => state.repos.isFetchError)
 
   const [searchValue, setSearchValue] = useState('')
-  const navigate = useNavigate()
   
   const pagesCount = Math.ceil(totalCount/perPage)
   const pages =[]
@@ -34,11 +32,6 @@ function Main() {
     dispatch(getRepos(searchValue, currentPage, perPage))
   }
 
-  // if (isFetchError) {
-  //   navigate('/error')
-  // }
-
-  // console.log(repos, "REPOS");
   return (
     <div>
 
@@ -50,10 +43,6 @@ function Main() {
       <div className="header">
         Поиск по самым популярным репозиториям GitHub
       </div>
-      {/* <div className="search">
-       <input value={searchValue} onChange={(event) => setSearchValue(event.target.value)} type='text' className="search-input" placeholder='Search repo'  />
-       <button onClick={() => searchHandler()} className='btn btn-outline-success'>Search</button>
-      </div> */}
 
       <div className="input-group mb-3">
         <button onClick={() => searchHandler()} className="btn btn-outline-secondary" type="button" id="button-addon1">Click me!</button>
