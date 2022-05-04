@@ -45,9 +45,17 @@ function Main() {
       </div>
 
       <div className="input-group mb-3">
-        <button onClick={() => searchHandler()} className="btn btn-outline-secondary" type="button" id="button-addon1">Click me!</button>
-        <input value={searchValue} onChange={(event) => setSearchValue(event.target.value)} type="text" className="form-control" aria-label="Example text with button addon" aria-describedby="button-addon1" 
-        placeholder='Search repo' />
+
+        <button onClick={() => searchHandler()} className="btn btn-outline-secondary" type="button" id="button-addon1">
+          Click me!
+        </button>
+
+        <input value={searchValue}
+         onChange={(event) => setSearchValue(event.target.value)} 
+         type="text" className="form-control" 
+         aria-label="Example text with button addon" 
+         aria-describedby="button-addon1" 
+         placeholder='Search repo' />
       </div>
       
       {
@@ -55,9 +63,7 @@ function Main() {
          ?
         repos.map((repo) => <Repo key={repo.id} repo={repo} />) 
          : 
-        <div className="fetching">
-          
-        </div>
+        <div className="fetching"></div>
       }
 
       <div className="pages">
