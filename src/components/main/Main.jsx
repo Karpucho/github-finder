@@ -49,7 +49,7 @@ function Main() {
         </div>
       }
       <div className="header">
-        Поиск по самым популярным репозиториям <a href='https://github.com/' target='_blank'>GitHub</a>
+        Поиск по самым популярным репозиториям <a href='https://github.com/' target='_blank'><b>GitHub</b></a>
       </div>
 
       <div className="input-group mb-3">
