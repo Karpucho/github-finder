@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentPage } from '../../reducers/reposReducer';
 import { createPages } from '../../utils/pagesCreator';
@@ -32,6 +33,13 @@ function Main() {
     dispatch(getRepos(searchValue, currentPage, perPage))
   }
 
+  const onKeyDown = (event) => {
+    if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+      dispatch(setCurrentPage(1))
+      dispatch(getRepos(searchValue, currentPage, perPage))
+    }
+  };
+
   return (
     <div>
 
@@ -41,7 +49,7 @@ function Main() {
         </div>
       }
       <div className="header">
-        Поиск по самым популярным репозиториям GitHub
+        Поиск по самым популярным репозиториям <a href='https://github.com/' target='_blank'>GitHub</a>
       </div>
 
       <div className="input-group mb-3">
@@ -51,7 +59,8 @@ function Main() {
         </button>
 
         <input value={searchValue}
-         onChange={(event) => setSearchValue(event.target.value)} 
+         onChange={(event) => setSearchValue(event.target.value)}
+         onKeyDown={onKeyDown}
          type="text" className="form-control" 
          aria-label="Example text with button addon" 
          aria-describedby="button-addon1" 
