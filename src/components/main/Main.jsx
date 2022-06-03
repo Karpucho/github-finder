@@ -16,7 +16,7 @@ function Main() {
   const perPage = useSelector(state => state.repos.perPage)
   const totalCount = useSelector(state => state.repos.totalCount)
   const isFetchError = useSelector(state => state.repos.isFetchError)
-
+  console.log('test git');
   const [searchValue, setSearchValue] = useState('')
   
   const pagesCount = Math.ceil(totalCount/perPage)
