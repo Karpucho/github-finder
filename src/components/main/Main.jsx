@@ -66,7 +66,6 @@ function Main() {
          aria-describedby="button-addon1" 
          placeholder='Search repo' />
       </div>
-      
       {
        !isFetching
          ?
